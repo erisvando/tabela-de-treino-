@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rotina de Treino</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('pag\ login.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h3 {
+            margin-bottom: 20px;
+            color: #FF4500;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            width: 90%;
+            height: 40px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #32CD32;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #28a745;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return logar();">
+        <h3>Login</h3>
+        <input type="text" placeholder="Login" id="login" required>
+        <input type="password" placeholder="Senha" id="senha" required>
+        <input type="submit" onclick="logar(); return false">
+        <div id="error" class="error"></div>
+    </form>
+
+    <script>
+        // Objeto para armazenar usuários e senhas
+        const usuarios = {
+            "Ednira": "Ednira1@",
+            "fabiola": "fabiola2@",
+            "aluna3": "senha3",
+            // Adicione mais alunas conforme necessário
+        };
+
+        function logar() {
+            var login = document.getElementById('login').value;
+            var senha = document.getElementById('senha').value;
+
+            // Verifica se o usuário existe e se a senha está correta
+            if (usuarios[login] && usuarios[login] === senha) 
+            {
+                location.href = "html/alunas.html"; // Redireciona para a página desejada
+            } else {
+                document.getElementById('error').innerText = 'Usuário ou senha incorretos';
+                return false; // Impede o envio do formulário
+            }
+        }
+    </script>
+</body>
+</html>
